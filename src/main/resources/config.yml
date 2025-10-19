@@ -1,0 +1,50 @@
+# XreatOptimizer Configuration
+# Do not modify branding settings - these are hardcoded
+
+general:
+  auto_mode: true
+  initial_profile: AUTO
+  broadcast_interval_minutes: 30
+
+optimization:
+  tps_thresholds:
+    light: 19.5
+    normal: 18
+    aggressive: 16
+  entity_limits:
+    passive: 200
+    hostile: 150
+    item: 1000
+
+hibernate:
+  radius: 64
+  enabled: true
+
+pregen:
+  max_threads: 2
+  default_speed: 100
+
+# Empty Server Optimization - Aggressive RAM/CPU reduction when no players online
+empty_server:
+  enabled: true
+  # Wait time before applying optimizations after last player leaves (seconds)
+  delay_seconds: 30
+  # Freeze time at noon and disable weather
+  freeze_time: true
+  # Minimum view distance when server is empty
+  min_view_distance: 2
+  # Minimum simulation distance when server is empty
+  min_simulation_distance: 2
+
+clear_interval_seconds: 300
+memory_reclaim_threshold_percent: 80
+enable_stack_fusion: true
+compress_ram_cache: true
+auto_tune: true
+
+# Item Drop Removal System
+item_removal:
+  # Time in seconds before items are removed (600 = 10 minutes)
+  lifetime_seconds: 600
+  # Time in seconds to show countdown warning before removal (10 = last 10 seconds)
+  warning_seconds: 10
