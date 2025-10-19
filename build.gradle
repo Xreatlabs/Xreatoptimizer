@@ -1,0 +1,67 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group = 'com.xreatlabs'
+version = '1.0.0'
+description = 'XreatOptimizer - Advanced Minecraft Server Performance Engine'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'spigot'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'paper'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+    maven {
+        name = 'placeholderapi'
+        url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+    }
+}
+
+dependencies {
+    // Spigot API
+    compileOnly 'org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT'
+    
+    // Optional Paper API for advanced features
+    compileOnly 'io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT'
+    
+    // Libby for runtime dependency management (commented out to allow build)
+    // implementation 'org.incendo:libby-bukkit:2.2.2'
+    
+    // Optional PlaceholderAPI support
+    compileOnly 'me.clip:placeholderapi:2.11.6'
+    
+    // Testing
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+}
+
+shadowJar {
+    archiveClassifier.set('')
+    minimize()
+    relocate 'org.incendo.libby', 'com.xreatlabs.xreatoptimizer.libby'
+}
+
+jar {
+    enabled = false
+    archiveClassifier.set('')
+}
+
+build.dependsOn shadowJar
+
+test {
+    useJUnitPlatform()
+}

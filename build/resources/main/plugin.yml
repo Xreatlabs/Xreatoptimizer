@@ -1,0 +1,30 @@
+name: XreatOptimizer
+version: ${version}
+main: com.xreatlabs.xreatoptimizer.XreatOptimizer
+api-version: 1.13
+load: POSTWORLD
+author: XreatLabs
+description: Advanced performance optimization engine for Minecraft servers
+website: https://xreatlabs.space
+
+commands:
+  xreatopt:
+    description: Main command for XreatOptimizer
+    usage: /<command> [stats|boost|pregen|purge|reload|report|clearcache]
+    aliases: [xreat, xopt]
+  xreatreport:
+    description: Generate performance reports
+    usage: /<command> [list]
+    aliases: [xreatreport, xoptreport]
+  xreatgui:
+    description: Open XreatOptimizer GUI
+    usage: /<command>
+    aliases: [xreatgui, xoptgui]
+
+permissions:
+  xreatopt.view:
+    description: Allows viewing statistics
+    default: true
+  xreatopt.admin:
+    description: Allows access to admin commands
+    default: op
